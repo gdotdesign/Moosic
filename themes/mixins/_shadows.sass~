@@ -1,0 +1,74 @@
+=box-shadow($ho: 0, $vo: 0, $blur: 5, $color: #000, $inset: false)
+  $full: $ho $vo $blur $color
+  @if $inset
+    $full: $full inset
+  :-webkit-box-shadow $full
+  :-moz-box-shadow $full
+  :-o-shadow $full
+  :box-shadow $full
+
+.shadow-basic
+  :position relative
+  &:before, &:after
+    :content ""
+    :position absolute
+    :z-index -2
+
+=lifted($blur: 15px,$color:rgba(0,0,0,0.6))
+  @extend .shadow-basic
+  &:before, &:after
+    :bottom 15px
+    :left 10px
+    :width 50%
+    :height 20%
+    +box-shadow(0, 20px, $blur, $color)
+    +transform(1, -3deg)
+  &:after
+    :right 10px 
+    :left auto 
+    +transform(1, 3deg)
+
+=curled()
+  @extend .shadow-basic
+  &:before,&:after
+    :bottom 12px
+    :left 10px
+    :width 50%
+    :height 55%
+    :max-width 200px
+    +box-shadow(0, 8px, 12px, rgba(0, 0, 0, 0.5))
+    +transform(1,-3deg,0,0,-8deg)
+  &:after 
+    :right 10px 
+    :left auto
+    +transform(1,3deg,0,0,8deg)
+
+=curved-vertical($blur: 15px,$color:rgba(0,0,0,0.6))
+  @extend .shadow-basic
+  &:before
+    :top $blur
+    :bottom $blur
+    :left 0
+    :right 0
+    :-webkit-box-shadow 0 0 $blur $color, 0 ($blur + 1px) ($blur - 10px) $color, 0 (- $blur + 1px) ($blur - 10px) $color
+    +border-radius(10px unquote("/") 100px)
+
+=curved-horizontal($blur: 15px,$color:rgba(0,0,0,0.6))
+  @extend .shadow-basic
+  &:before
+    :top 50%
+    :bottom 0
+    :left 10px
+    :right 10px
+    +box-shadow(0, 0, $blur, $color)
+    +border-radius(100px unquote("/") 10px)
+
+=curved-horizontal-2($blur: 15px,$color:rgba(0,0,0,0.6))
+  @extend .shadow-basic
+  &:before
+    :top 0
+    :bottom 0
+    :left 10px
+    :right 10px
+    +box-shadow(0, 0, $blur, $color)
+    +border-radius-full(100px unquote("/") 10px)

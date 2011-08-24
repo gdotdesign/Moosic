@@ -1,0 +1,33 @@
+.arrow-basic
+  :font-size 0
+  :line-height 0
+  :width 0
+  :height 0
+  
+=arrow-right($size: 10px, $color: #000)
+  @extend .arrow-basic
+  :border-top $size solid transparent
+  :border-bottom $size solid transparent
+  :border-left $size solid $color
+  :border-right none
+
+=arrow-left($size: 10px, $color: #000)
+  @extend .arrow-basic
+  :border-top $size solid transparent
+  :border-bottom $size solid transparent
+  :border-left none
+  :border-right $size solid $color
+  
+=arrow-bottom($size: 10px, $color: #000)
+  @extend .arrow-basic
+  :border-top $size solid $color
+  :border-bottom none 
+  :border-left $size solid transparent
+  :border-right $size solid transparent
+  
+=arrow-top($size: 10px, $color: #000)
+  @extend .arrow-basic
+  :border-top none
+  :border-bottom $size solid $color
+  :border-left $size solid transparent
+  :border-right $size solid transparent

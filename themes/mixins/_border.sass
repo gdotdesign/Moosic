@@ -1,0 +1,12 @@
+=border-radius($tl: 0, $tr: 0, $bl: 0, $br: 0)
+  @if $tl != 0 and $tr == 0 and $bl == 0 and $br == 0
+    -webkit-border-radius: $tl 
+    -moz-border-radius: $tl
+    border-radius: $tl 
+  @else
+    -webkit-border-radius: $tl $tr $br $bl
+    -moz-border-radius: $tl $tr $br $bl
+    border-radius: $tl $tr $br $bl
+      
+  
+  

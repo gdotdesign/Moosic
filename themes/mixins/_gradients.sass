@@ -1,0 +1,7 @@
+=linear-gradient($top: #fff,$bottom: #000)
+  :background-image -webkit-gradient(linear, 0% 0%, 0% 100%, from($top), to($bottom))
+  //:background-image -moz-linear-gradient(center bottom,$bottom 0%,$top 100%)
+  
+=radial-gradient($top:#fff,$bottom:#000,$size:100)
+  :background-image -webkit-gradient(radial, 50% 0, 0, 50% 0, $size, from($top), to($bottom))
+  //:background-image -moz-linear-gradient(center bottom,$bottom 0%,$top 100%)
