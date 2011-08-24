@@ -10,8 +10,8 @@ class Site < Sinatra::Application
   set :public, Proc.new { File.join(root, "public") }
   set :haml, {:ugly=>true} 
   
-  get "/player.js" do
-    CoffeeScript.compile File.read("Source/Moosic.coffee")
+  get "/site.js" do
+    CoffeeScript.compile File.read("Source/Moosic.coffee")+File.read("themes/site.coffee")
   end
   
   get "/theme.css" do

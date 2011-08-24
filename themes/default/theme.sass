@@ -53,6 +53,19 @@ article, header
   :margin 0 auto
   :text-align center
   :color #eee
+
+a
+  :color lighten(#7cbf10,10%) 
+  :text-decoration none
+  :border-bottom 1px dashed darken(#7cbf10,10%)
+
+a:hover
+  :color lighten(#7cbf10,20%) 
+  :border-bottom 1px dashed lighten(#7cbf10,10%)
+  
+a:visited
+  :color #7cbf10
+  :border-bottom 1px solid darken(#7cbf10,20%)
   
 h1,h2,h3
   :margin 0
@@ -69,6 +82,15 @@ h2
   :font-weight 400
   :margin-bottom 30px
 h3
+  a
+    :float right
+    :border none 
+    :text-shadow 1px 1px #000
+    :color lighten(#7cbf10,20%) !important
+    :font-size 14px
+    :line-height 40px
+    &:hover
+      :border none 
   :text-align left
   :font-size 25px  
   :text-transform uppercase
@@ -78,6 +100,8 @@ h3
 b
   :color lighten(#7cbf10,10%)
   :font-size 16px
+i
+  :color darken(#7cbf10,10%)
 .class
   :font-size 20px 
   :font-weight bold
@@ -89,6 +113,16 @@ b
     :list-style none
     :padding-left 20px
     :margin 10px 0
+    ul
+      :padding-left 20px
+      :margin 0
+      b
+        :color #f2f2f2
+        :font-size 14px
+ol
+  :margin-top -10px
+ul
+  :list-style none
 li
   :line-height 24px
   :font-size 14px
@@ -128,14 +162,6 @@ section
   :padding 20px
   :text-align left
   +border-radius(5px)
-a
-  :color lighten(#7cbf10,10%) 
-  :text-decoration none
-  :border-bottom 1px dashed darken(#7cbf10,10%)
-
-a:visited
-  :color darken(#7cbf10,10%)
-  :border-bottom 1px dashed darken(#7cbf10,20%) 
 
 nav
   :background-color rgba(0,0,0,0.6)
@@ -181,6 +207,7 @@ $tdPadding: 5px
 .player 
   :-webkit-user-select none
   .progress, .volume
+    :cursor pointer
     :height $height3
     :position relative
     :border 1px solid $borderColorDark
@@ -300,8 +327,10 @@ $tdPadding: 5px
   &.idle
     .details
       :height 0
+      :border-bottom 1px solid transparent
+      :margin-bottom 0
     .playlist
-      :height $height - $height2 - $margin*3 
+      :height $height - $height2 - $margin*2
   .playlist
     :width $playlist - 1px
     :height $height - $height2 - $titleHeight - $margin*3 
@@ -368,7 +397,14 @@ $tdPadding: 5px
   .play, .prev, .next, .repeat, .empty, .shuffle, .progress, .volume
     +linear_gradient($colorLight,$color)
     &.active
-      +linear_gradient($colorDark,$colorDarker)
+      &:after
+        :content ""
+        :position absolute
+        :top 0
+        :left 0
+        :right 0
+        :height 3px
+        :background-color $colorHighlight
     &:active, &:hover
       +linear_gradient($colorLighter,$colorLight)
     .bar
