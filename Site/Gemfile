@@ -1,0 +1,8 @@
+source :rubygems
+gem 'coffee-script'
+gem 'sinatra'
+gem 'sass'
+gem 'haml'
+group :v8 do
+  gem 'therubyracer-heroku', '0.8.1.pre3'
+end
