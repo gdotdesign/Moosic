@@ -1,0 +1,57 @@
+@import ../_mixins
+
+@import _theme
+
+.player 
+  +box-shadow(0,0,30px,rgba(0,0,0,0.5))
+  :border 5px solid rgba(0,0,0,0.6)
+  +border-radius(5px)
+  .play, .prev, .next, .repeat, .empty, .shuffle, .progress, .volume
+    +linear_gradient($colorLight,$color)
+    &.active
+      &:after
+        :content ""
+        :position absolute
+        :top 0
+        :left 0
+        :right 0
+        :height 3px
+        :background-color $colorHighlight
+    &:active, &:hover
+      +linear_gradient($colorLighter,$colorLight)
+    .bar
+      +linear_gradient(lighten($colorHighlight,10%),darken($colorHighlight,10%))
+  .details, .playlist
+    :-webkit-transition-duration 500ms
+  .playlist
+    :background-color rgba(0,0,0,0.1)
+    &::-webkit-scrollbar
+      :height 7px
+      :width 7px
+    &::-webkit-scrollbar-button:start:decrement &::-webkit-scrollbar-button:end:increment
+      :display none
+    &::-webkit-scrollbar-track-piece
+      -webkit-border-radius: 3px
+      :background-color rgba(0,0,0,0.15)
+      :cursor pointer
+    &::-webkit-scrollbar-thumb:vertical
+      background: -webkit-gradient(linear, left bottom, right bottom, from(#eee), to(#ddd))
+      :cursor pointer
+      -webkit-border-radius: 3px
+      width: 25px
+    tr
+      :background-color rgba(0,0,0,0.1)
+      :-webkit-background-clip padding-box
+      &:hover
+        :background-color rgba(255,255,255,0.1)
+    tr.playing
+      :background-color rgba(0,0,0,0.6)
+  .cover
+    +border-radius(3px)
+    :-webkit-background-clip padding
+    .img
+      +border-radius(3px)
+    .over
+      +border-radius(3px)
+      :background-image -webkit-gradient(radial, 50% 40%, 160, 50% 40%, 0, from(rgba(0,0,0,0.7)), to(rgba(0,0,0,0)))   
+
